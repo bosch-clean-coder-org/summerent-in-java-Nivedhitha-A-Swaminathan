@@ -11,24 +11,24 @@ public class TypewiseAlertTest
     public void testinfersLowBreachAsPerLimits()
     {
       TypewiseAlert alert = new TypewiseAlert();
-      assertTrue(alert.inferBreach(0, TypewiseAlert.CoolingType.HI_ACTIVE_COOLING) ==
-        TypewiseAlert.BreachType.TOO_LOW);
+      assertTrue(alert.inferBreach(0, CoolingType.HI_ACTIVE_COOLING) ==
+        BreachType.TOO_LOW);
     }
 
     @Test
     public void testinfersHighBreachAsPerLimits()
     {
         TypewiseAlert alert = new TypewiseAlert();
-        assertTrue(alert.inferBreach(45, TypewiseAlert.CoolingType.MED_ACTIVE_COOLING) ==
-                TypewiseAlert.BreachType.TOO_HIGH);
+        assertTrue(alert.inferBreach(45, CoolingType.MED_ACTIVE_COOLING) ==
+               BreachType.TOO_HIGH);
     }
 
     @Test
     public void testinfersNormalBreachAsPerLimits()
     {
         TypewiseAlert alert = new TypewiseAlert();
-        assertTrue(alert.inferBreach(25,  TypewiseAlert.CoolingType.PASSIVE_COOLING) ==
-                TypewiseAlert.BreachType.NORMAL);
+        assertTrue(alert.inferBreach(25, CoolingType.PASSIVE_COOLING) ==
+               BreachType.NORMAL);
     }
 
 
