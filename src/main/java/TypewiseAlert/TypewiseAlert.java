@@ -2,10 +2,17 @@ package TypewiseAlert;
 
 
 public class TypewiseAlert {
+
     public enum BreachType {
-        NORMAL,
-        TOO_LOW,
-        TOO_HIGH
+        NORMAL("normal"),
+        TOO_LOW ("too low"),
+        TOO_HIGH ("too high");
+
+        private final String label;
+
+        private BreachType (String typeLabel){
+            this.label = typeLabel;
+        }
     }
 
     public enum CoolingType {
@@ -14,8 +21,8 @@ public class TypewiseAlert {
         HI_ACTIVE_COOLING(0, 45),
         MED_ACTIVE_COOLING(0, 40);
 
-        private int coolingTypeLowerLimit;
-        private int coolingTypeUpperLimit;
+        private final int coolingTypeLowerLimit;
+        private final int coolingTypeUpperLimit;
 
         private CoolingType(int lowerLimit, int upperLimit) {
             this.coolingTypeLowerLimit = lowerLimit;
@@ -52,7 +59,7 @@ public class TypewiseAlert {
     }
 
     public void checkAndAlert(
-            AlertTarget alertTarget, CoolingType coolingType, double temperatureInC) {
+        AlertTarget alertTarget, CoolingType coolingType, double temperatureInC) {
         BreachType breachType = inferBreach(temperatureInC, coolingType);
 
         switch (alertTarget) {
@@ -71,22 +78,14 @@ public class TypewiseAlert {
 
     public void sendToEmail(BreachType breachType) {
         String recepient = "a.b@c.com";
-        switch (breachType) {
-            case TOO_LOW:
-                System.out.printf("To: %s\n", recepient);
-                System.out.println("Hi, the temperature is too low\n");
-                break;
-            case TOO_HIGH:
-                System.out.printf("To: %s\n", recepient);
-                System.out.println("Hi, the temperature is too high\n");
-                break;
-
-        }
-    }
+        System.out.printf("To: %s\n", recepient);
+        String message = breachType.label;
+        System.out.println("Hi, the temperature is " + message +"\n");
+     }
 
     public static void main(String[] args) {
         TypewiseAlert alert = new TypewiseAlert();
-        alert.checkAndAlert(AlertTarget.TO_CONTROLLER, CoolingType.HI_ACTIVE_COOLING, 50.1);
+        alert.checkAndAlert(AlertTarget.TO_EMAIL, CoolingType.HI_ACTIVE_COOLING, 50.1);
     }
 
 }
