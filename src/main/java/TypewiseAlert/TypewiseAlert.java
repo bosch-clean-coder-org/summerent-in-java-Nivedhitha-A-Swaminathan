@@ -10,9 +10,27 @@ public class TypewiseAlert
     }
 
     public enum CoolingType {
-        PASSIVE_COOLING,
-        HI_ACTIVE_COOLING,
-        MED_ACTIVE_COOLING
+
+        PASSIVE_COOLING(0,35),
+        HI_ACTIVE_COOLING(0,45),
+        MED_ACTIVE_COOLING(0,40);
+
+        private int upperlimit;
+        private int lowerlimit;
+
+
+        private CoolingType(int lowerLimit, int upperLimit) {
+            this.lowerlimit = lowerlimit;
+            this.upperlimit = upperlimit;
+
+        }
+
+        public int getLowerlimit() {
+            return this.getLowerlimit();
+        }
+        public int getUpperLimit() {
+            return this.upperlimit;
+        }
     }
 
     public enum AlertTarget{
@@ -34,20 +52,7 @@ public class TypewiseAlert
 
     public  BreachType classifyTemperatureBreach(
         CoolingType coolingType, double temperatureInC) {
-      int lowerLimit = 0;
-      int upperLimit = 0;
-      switch(coolingType) {
-        case PASSIVE_COOLING:
-            upperLimit = 35;
-          break;
-        case HI_ACTIVE_COOLING:
-            upperLimit = 45;
-          break;
-        case MED_ACTIVE_COOLING:
-            upperLimit = 40;
-          break;
-      }
-      return inferBreach(temperatureInC, lowerLimit, upperLimit);
+       return inferBreach(temperatureInC, coolingType.getLowerlimit(), coolingType.getUpperLimit());
     }
 
 
