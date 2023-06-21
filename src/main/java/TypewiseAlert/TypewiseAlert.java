@@ -5,28 +5,38 @@ package TypewiseAlert;
 public class TypewiseAlert {
 
 
-    public BreachType inferBreach(double value, CoolingType coolingType) {
+    /*public BreachTypeEnum inferBreach(double value, CoolingType coolingType) {
 
         if (value > coolingType.coolingTypeLowerLimit && value < coolingType.coolingTypeUpperLimit) {
-            return BreachType.NORMAL;
+            return BreachTypeEnum.NORMAL;
         } else {
             if (value > coolingType.coolingTypeUpperLimit) {
-                return BreachType.TOO_HIGH;
+                return BreachTypeEnum.TOO_HIGH;
             }
-            return BreachType.TOO_LOW;
+            return BreachTypeEnum.TOO_LOW;
         }
 
 
     }
+*/
+    public static BreachTypeEnum inferBreach(double value, CoolingType coolingType) {
+        if(value < coolingType.coolingTypeLowerLimit) {
+            return BreachTypeEnum.TOO_LOW;
+        }
+        if(value > coolingType.coolingTypeUpperLimit) {
+            return BreachTypeEnum.TOO_HIGH;
+        }
+        return BreachTypeEnum.NORMAL;
+    }
 
     public void checkAndAlert(
         CoolingType coolingType, double temperatureInC) {
-        BreachType breachType = inferBreach(temperatureInC, coolingType);
+        BreachTypeEnum breachTypeEnum = inferBreach(temperatureInC, coolingType);
 
         SendToController sendToController = new SendToController();
-        sendToController.send(breachType);
+        sendToController.send(breachTypeEnum);
         SendToMail sendToMail = new SendToMail();
-        sendToMail.send(breachType);
+        sendToMail.send(breachTypeEnum);
 
 
     }

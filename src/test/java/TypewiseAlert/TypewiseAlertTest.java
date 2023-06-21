@@ -12,7 +12,7 @@ public class TypewiseAlertTest
     {
       TypewiseAlert alert = new TypewiseAlert();
       assertTrue(alert.inferBreach(0, CoolingType.HI_ACTIVE_COOLING) ==
-        BreachType.TOO_LOW);
+        BreachTypeEnum.TOO_LOW);
     }
 
     @Test
@@ -20,7 +20,7 @@ public class TypewiseAlertTest
     {
         TypewiseAlert alert = new TypewiseAlert();
         assertTrue(alert.inferBreach(45, CoolingType.MED_ACTIVE_COOLING) ==
-               BreachType.TOO_HIGH);
+               BreachTypeEnum.TOO_HIGH);
     }
 
     @Test
@@ -28,7 +28,7 @@ public class TypewiseAlertTest
     {
         TypewiseAlert alert = new TypewiseAlert();
         assertTrue(alert.inferBreach(25, CoolingType.PASSIVE_COOLING) ==
-               BreachType.NORMAL);
+               BreachTypeEnum.NORMAL);
     }
 
 
