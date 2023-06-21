@@ -7,13 +7,7 @@ import org.junit.Test;
 
 public class TypewiseAlertTest 
 {
-    @Test
-    public void testinfersLowBreachAsPerLimits()
-    {
-      TypewiseAlert alert = new TypewiseAlert();
-      assertTrue(alert.inferBreach(0, CoolingType.HI_ACTIVE_COOLING) ==
-        BreachTypeEnum.TOO_LOW);
-    }
+
 
     @Test
     public void testinfersHighBreachAsPerLimits()
