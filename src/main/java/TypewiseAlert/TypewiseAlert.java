@@ -42,10 +42,13 @@ public class TypewiseAlert
 
         if(value > lowerLimit && value < upperLimit){
             return BreachType.NORMAL;
-        }else if(value > upperLimit){
-            return BreachType.TOO_HIGH;
+        }else{
+            if(value > upperLimit){
+                return BreachType.TOO_HIGH;
+            }
+            return BreachType.TOO_LOW;
         }
-        return BreachType.TOO_LOW;
+
 
     }
 
@@ -86,8 +89,7 @@ public class TypewiseAlert
           System.out.printf("To: %s\n", recepient);
           System.out.println("Hi, the temperature is too high\n");
           break;
-        case NORMAL:
-          break;
+
       }
     }
 
