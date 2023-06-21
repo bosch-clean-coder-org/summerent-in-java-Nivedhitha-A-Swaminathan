@@ -39,14 +39,14 @@ public class TypewiseAlert
     }
 
     public  BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
-      if(value < lowerLimit) {
+
+        if(value > lowerLimit && value < upperLimit){
+            return BreachType.NORMAL;
+        }else if(value > upperLimit){
+            return BreachType.TOO_HIGH;
+        }
         return BreachType.TOO_LOW;
-      }else {
-          if (!(value > upperLimit)) {
-              return BreachType.NORMAL;
-          }
-          return BreachType.TOO_HIGH;
-      }
+
     }
 
 
