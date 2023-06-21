@@ -1,6 +1,6 @@
 package TypewiseAlert;
 
-public class SendToMail implements IAction {
+public class MailAlert implements IAction {
 
 
     @Override

@@ -1,8 +1,6 @@
 package TypewiseAlert;
 
-public class SendToController implements IAction{
-
-
+public class ControllerAlert implements IAction{
 
     @Override
     public void send(BreachTypeEnum breachTypeEnum) {
