@@ -45,4 +45,13 @@ Think about guiding refactoring-work in your regular/project teams. Think of the
 You have seen a few workflows in this repository. They are quality-gates to prevent duplication, control complexity and prove functionality. Do you think some of them have potential to guide code-improvements in your team? yes
 
 During the next four weeks, what improvement do you plan in your code-quality practice? (in your regular work, not in this repository!)
-**_enter the practice here**
+I aim to do about following changes to improve code quality
+1. Reducing cyclomatic complexity - i.e reducing number of possible execution paths/decisions structures in a method
+2. Avoid code duplication, instead reuse the methods
+3. Introducing Strategy pattern to carry out behaviours when switch statement has too many cases 
+4. Optimise too may if(){}else if(){}else if{}...else{} conditional checks and reduce its complexity in decision making
+5. Improve unit tests coverage
+6. Study various other design patterns to make the code simplier, maintainable and reduce its complexity
+7. Explore Decorator pattern for if statements based on flags arguments
+8. Remove dead code
+9. Refactor methods with more lines. Break them into small small methods.
